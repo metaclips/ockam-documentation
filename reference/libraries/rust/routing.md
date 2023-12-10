@@ -331,11 +331,11 @@ Note the message flow.
 
 #### Routing over two transport hops
 
-#### Forwarder worker
+#### Relay worker
 
-For demonstration, we'll create another worker, called `Forwarder`, that takes every incoming message and forwards it to the predefined address.
+For demonstration, we'll create another worker, called `Relay`, that takes every incoming message and forwards it to the predefined address.
 
-Just before forwarding the message, `Forwarder`'s handle message function will:
+Just before forwarding the message, `Relay`'s handle message function will:
 
 1. Print the message
 2. Remove its own address (first address) from the `onward_route`, by calling `step()`
@@ -344,13 +344,13 @@ Just before forwarding the message, `Forwarder`'s handle message function will:
 Create a new file at:
 
 ```
-touch src/forwarder.rs
+touch src/relay.rs
 ```
 
 Add the following code to this file:
 
 ```rust
-// src/forwarder.rs
+// src/relay.rs
 
 use ockam::{Address, Any, Context, LocalMessage, Result, Routed, Worker};
 
