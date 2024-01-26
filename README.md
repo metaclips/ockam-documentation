@@ -2,6 +2,8 @@
 description: Build secure-by-design applications that can trust all data-in-motion.
 ---
 
+![Docs test badge](https://github.com/metaclips/ockam-documentation/actions/workflows/docs_test_check.yml/badge.svg?branch=metaclips/add_docs_test_status_badge)
+
 # Introduction to Ockam
 
 Ockam is a suite of programming libraries, command line tools, and managed cloud services to orchestrate end-to-end encryption, mutual authentication, key management, credential management, and authorization policy enforcement – at massive scale.
