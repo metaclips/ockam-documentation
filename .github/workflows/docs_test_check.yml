@@ -27,18 +27,19 @@ jobs:
           path: ockam
           fetch-depth: 0
           repository: build-trust/ockam
+          ref: metaclips/automate_cli_docs
         
       - name: Checkout The Ockam Documentation Repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           path: ockam-documentation
           fetch-depth: 0
-          repository: build-trust/ockam-documentation
         
       - name: Check The Current Commit SHA Of The Docs Bats Test
         run: |
-          docs_test_sha=$(git rev-parse --short=8 HEAD~2 -- implementations/rust/ockam/ockam_command/tests/bats/use_cases.bats)
+          cd ockam
+          docs_test_sha=$(git rev-parse --short=8 HEAD -- implementations/rust/ockam/ockam_command/tests/bats/use_cases.bats)
           # Check if the sha exists in the file
-          if ! cat ockam-documentation/${{ env.DATA_DIR }} | grep "$docs_test_sha"; then
+          if ! cat ${{ github.workspace }}/ockam-documentation/${{ env.DATA_DIR }} | grep "$docs_test_sha"; then
             exit 1
           fi
