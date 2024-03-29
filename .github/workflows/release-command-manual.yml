@@ -20,7 +20,7 @@ defaults:
 jobs:
   update_manual:
     name: Release - update command manual
-    runs-on: ubuntu-22.04
+    runs-on: macos-14
     permissions:
       contents: write
 
